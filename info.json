@@ -1,0 +1,12 @@
+{
+	"name": "AquiloTrenches",
+	"version": "1.0.0",
+	"title": "Aquilo Trenches",
+	"author": "StephenB",
+	"factorio_version": "2.0",
+	"dependencies": [
+		"base >= 2.0",
+		"space-age"
+	],
+	"description": "Aquilo has dark trenches between islands, which cannot be bridged with ice platforms. You'll need ships."
+}
