@@ -8,9 +8,32 @@ trenchTile.tint = {.0, .0, .05, .5} -- For the icon in Factoriopedia, not for th
 trenchTile.effect_color = {18, 16, 39}
 trenchTile.effect_color_secondary = {12, 24, 52}
 -- I thought I would have to set collision masks or sth to block landfill/foundation/ice platform on aquilo-trench, and allow waterways. But it looks like it already behaves like that by default, so no changes necessary.
+--[[
+Actually it currently allows railway supports; want to block that.
+	Lava has layers: water_tile, resource, doodad, rail, item, player, lava_tile.
+	Water has layers: water_tile, resource, doodad, floor, item, player.
+	Waterway has collision layers: waterway, rail, object.
+	Rail support has layers: is_lower_object, is_object, rail, object, rail_support
+		But after the deep-oil-ocean tech is researched, it changes to: is_lower_object, is_object, rail, object.
+We want to allow waterways and ships on it, but not allow rail supports. Could add rail_support layer, but then it doesn't work after the deep-oil-ocean tech is researched.
+So, need to create a new collision layer specifically for that.
+]]
+trenchTile.collision_mask.layers.aquilo_trench = true
+
+-- Add aquilo_trench collision layer to rail supports.
+data.raw["utility-constants"].default.default_collision_masks["rail-support"].layers.aquilo_trench = true
+data.raw["utility-constants"].default.default_collision_masks["rail-support/allow_on_deep_oil_ocean"].layers.aquilo_trench = true
+
+-- Create collision layer.
+---@type data.CollisionLayerPrototype
+local collisionLayer = {
+	type = "collision-layer",
+	name = "aquilo_trench",
+}
 
 data:extend{
-	trenchTile,
+	trenchTile, ---@diagnostic disable-line: assign-type-mismatch
+	collisionLayer,
 	{
 		type = "noise-expression",
 		name = "aquilo_trench",
