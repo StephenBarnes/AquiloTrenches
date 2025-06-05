@@ -7,6 +7,8 @@ trenchTile.tint = {.0, .0, .05, .5} -- For the icon in Factoriopedia, not for th
 -- Water tiles reuse graphics from the main water tile, using effect color to make them look different.
 trenchTile.effect_color = {18, 16, 39}
 trenchTile.effect_color_secondary = {12, 24, 52}
+-- Add to list of water tiles, so it uses tile transition graphics for water tiles.
+table.insert(water_tile_type_names, "aquilo-trench")
 -- I thought I would have to set collision masks or sth to block landfill/foundation/ice platform on aquilo-trench, and allow waterways. But it looks like it already behaves like that by default, so no changes necessary.
 --[[
 Actually it currently allows railway supports; want to block that.

@@ -3,7 +3,7 @@ Version: 1.1.0
 Date: 2025-06-05
   Bugfixes:
     - Prevent rail supports from being placed on Aquilo trench tiles.
-    - TODO Fixed tile transitions.
+    - Fixed tile transition graphics.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.0
 Date: 2025-01-16
